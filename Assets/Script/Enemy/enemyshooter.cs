@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyShooter : MonoBehaviour
@@ -8,17 +9,26 @@ public class EnemyShooter : MonoBehaviour
 
     [Header("Shoot Setting")]
     [SerializeField] private float fireRate = 1f;
-
+    
     private float fireTimer;
 
+    [SerializeField] private bool inCam = false;
+    [SerializeField] private float leftOffSide;
+    [SerializeField] private float rightOffSide;
+    [SerializeField] private Vector2 offside;
     private void Update()
     {
         fireTimer += Time.deltaTime;
 
         if (fireTimer >= fireRate)
         {
-            Shoot();
-            fireTimer = 0f;
+           
+            if (gameObject.transform.position.x >= leftOffSide && gameObject.transform.position.x <= rightOffSide)
+            {
+                Shoot();
+                fireTimer = 0f;
+            }
+            
         }
     }
 
@@ -26,4 +36,6 @@ public class EnemyShooter : MonoBehaviour
     {
         Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
     }
+
+    
 }

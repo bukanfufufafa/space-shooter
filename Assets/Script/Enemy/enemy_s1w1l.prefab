@@ -167,4 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7966521394567123929, guid: 58ecbc44ecdfd0d449a569cf5ddc49ed, type: 3}
   firePoint: {fileID: 5761866792015480420}
-  fireRate: 1
+  fireRate: 4
+  inCam: 0
+  leftOffSide: -8.81
+  rightOffSide: 9.11
