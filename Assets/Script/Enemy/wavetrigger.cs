@@ -10,46 +10,63 @@ public class WaveTrigger : MonoBehaviour
 
     //[SerializeField] private StageManager stageManager;
 
-    [SerializeField]private bool wave1Finished = false;
-    [SerializeField]private bool wave2Finished = false;
+    private bool wave1Finished;
+    private bool wave2Finished;
 
     private void Start()
     {
+        wave1Finished = false;
+        wave2Finished = false;
+
+        // Wave 2 disembunyikan
         foreach (EnemySpawner spawner in spawnerWave2)
         {
             spawner.gameObject.SetActive(false);
         }
 
+        // Reset Wave 1
         foreach (EnemySpawner spawner in spawnerWave1)
         {
             spawner.gameObject.SetActive(true);
-            spawner.BeginSpawn();
+            spawner.ResetGroup();
         }
     }
 
     private void Update()
     {
+        // ======================
+        // Wave 1
+        // ======================
+
         if (!wave1Finished)
         {
-            if (spawnerWave1.All(x => x.defeated))
+            if (spawnerWave1.All(x => x.Defeated))
             {
                 wave1Finished = true;
+
+                Debug.Log("Wave 1 Selesai");
 
                 //stageManager.OnStageCleared();
 
                 foreach (EnemySpawner spawner in spawnerWave2)
                 {
                     spawner.gameObject.SetActive(true);
-                    spawner.BeginSpawn();
+                    spawner.ResetGroup();
                 }
             }
         }
 
+        // ======================
+        // Wave 2
+        // ======================
+
         if (!wave2Finished)
         {
-            if (spawnerWave2.All(x => x.defeated))
+            if (spawnerWave2.All(x => x.Defeated))
             {
                 wave2Finished = true;
+
+                Debug.Log("Wave 2 Selesai");
 
                 //stageManager.OnStageCleared();
             }
@@ -61,7 +78,7 @@ public class WaveTrigger : MonoBehaviour
         foreach (EnemySpawner spawner in spawnerWave2)
         {
             spawner.gameObject.SetActive(true);
-            spawner.BeginSpawn();
+            spawner.ResetGroup();
         }
     }
 }

@@ -1,63 +1,51 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [Header("Enemy")]
-    [SerializeField] private GameObject enemyPrefab;
-
-    [Header("Spawn Setting")]
-    [SerializeField] private int totalEnemy = 10;
-    [SerializeField] private float spawnDelay = 1f;
-
+    [Header("Enemy Reference")]
     [SerializeField] private List<GameObject> enemyReference = new();
 
-    private int currentSpawned = 0;
+    public bool Defeated { get; private set; }
 
-    public bool defeated { get; private set; }
-
-    public void BeginSpawn()
+    private void Awake()
     {
-        defeated = false;
-        currentSpawned = 0;
-        enemyReference.Clear();
-
-        StartCoroutine(SpawnEnemy());
-    }
-
-    IEnumerator SpawnEnemy()
-    {
-        while (currentSpawned < totalEnemy)
+        // Jika list kosong, otomatis ambil semua child
+        if (enemyReference.Count == 0)
         {
-            GameObject enemy = Instantiate(
-                enemyPrefab,
-                transform.position,
-                Quaternion.identity);
-
-            enemyReference.Add(enemy);
-
-            currentSpawned++;
-
-            yield return new WaitForSeconds(spawnDelay);
+            foreach (Transform child in transform)
+            {
+                enemyReference.Add(child.gameObject);
+            }
         }
 
-        StartCoroutine(CheckDefeated());
+        Defeated = false;
     }
 
-    IEnumerator CheckDefeated()
+    private void Update()
     {
-        while (true)
+        if (Defeated)
+            return;
+
+        enemyReference.RemoveAll(enemy =>
+            enemy == null || !enemy.activeInHierarchy);
+
+        if (enemyReference.Count == 0)
         {
-            enemyReference.RemoveAll(enemy => enemy == null);
+            Defeated = true;
+            Debug.Log($"{gameObject.name} selesai.");
+        }
+    }
 
-            if (enemyReference.Count == 0)
-            {
-                defeated = true;
-                yield break;
-            }
+    public void ResetGroup()
+    {
+        Defeated = false;
 
-            yield return new WaitForSeconds(0.2f);
+        enemyReference.Clear();
+
+        foreach (Transform child in transform)
+        {
+            enemyReference.Add(child.gameObject);
         }
     }
 }
