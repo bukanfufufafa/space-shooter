@@ -14,9 +14,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<GameObject> enemyReference = new();
 
     private int currentSpawned = 0;
-    public bool defeated = false;
-    private void Start()
+
+    public bool defeated { get; private set; }
+
+    public void BeginSpawn()
     {
+        defeated = false;
+        currentSpawned = 0;
+        enemyReference.Clear();
+
         StartCoroutine(SpawnEnemy());
     }
 
@@ -27,14 +33,31 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemy = Instantiate(
                 enemyPrefab,
                 transform.position,
-                Quaternion.identity
-            );
+                Quaternion.identity);
 
             enemyReference.Add(enemy);
 
             currentSpawned++;
 
             yield return new WaitForSeconds(spawnDelay);
+        }
+
+        StartCoroutine(CheckDefeated());
+    }
+
+    IEnumerator CheckDefeated()
+    {
+        while (true)
+        {
+            enemyReference.RemoveAll(enemy => enemy == null);
+
+            if (enemyReference.Count == 0)
+            {
+                defeated = true;
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.2f);
         }
     }
 }

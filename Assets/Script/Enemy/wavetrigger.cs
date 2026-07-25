@@ -1,47 +1,67 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class wavetrigger : MonoBehaviour
+public class WaveTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Header("Wave")]
+    [SerializeField] private List<EnemySpawner> spawnerWave1 = new();
+    [SerializeField] private List<EnemySpawner> spawnerWave2 = new();
 
-    [SerializeField] private List<EnemySpawner> spawnerWave1 = new List<EnemySpawner>();
-    [SerializeField] private List<EnemySpawner> spawnerWave2 = new List<EnemySpawner>();
+    //[SerializeField] private StageManager stageManager;
 
-    private int paternDefeated;
-    void Start()
+    [SerializeField]private bool wave1Finished = false;
+    [SerializeField]private bool wave2Finished = false;
+
+    private void Start()
     {
-        
-        foreach (var item in spawnerWave2)
+        foreach (EnemySpawner spawner in spawnerWave2)
         {
-            item.gameObject.SetActive(false);
+            spawner.gameObject.SetActive(false);
         }
 
-        foreach (var item in spawnerWave1)
+        foreach (EnemySpawner spawner in spawnerWave1)
         {
-            item.gameObject.SetActive(true);
+            spawner.gameObject.SetActive(true);
+            spawner.BeginSpawn();
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        foreach (EnemySpawner spawner in spawnerWave1)
+        if (!wave1Finished)
         {
-            if (spawner.defeated = true)
+            if (spawnerWave1.All(x => x.defeated))
             {
-                paternDefeated++;
+                wave1Finished = true;
+
+                //stageManager.OnStageCleared();
+
+                foreach (EnemySpawner spawner in spawnerWave2)
+                {
+                    spawner.gameObject.SetActive(true);
+                    spawner.BeginSpawn();
+                }
             }
         }
 
+        if (!wave2Finished)
+        {
+            if (spawnerWave2.All(x => x.defeated))
+            {
+                wave2Finished = true;
+
+                //stageManager.OnStageCleared();
+            }
+        }
+    }
+
+    public void StartWave2()
+    {
         foreach (EnemySpawner spawner in spawnerWave2)
         {
-            if (spawner.defeated = true)
-            {
-                paternDefeated++;
-            }
+            spawner.gameObject.SetActive(true);
+            spawner.BeginSpawn();
         }
     }
 }
