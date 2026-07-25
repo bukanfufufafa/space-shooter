@@ -25,7 +25,6 @@ public class StageManager : MonoBehaviour
             case GameStage.Stage3:
                 Debug.Log("Semua stage selesai!");
                 currentStage = GameStage.Done;
-                // lanjut ke scene menang / ending, dll
                 break;
         }
     }

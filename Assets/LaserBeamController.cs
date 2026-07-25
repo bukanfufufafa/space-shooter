@@ -2,46 +2,34 @@ using System.Collections;
 using UnityEngine;
 
 
-[RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class LaserBeamController : MonoBehaviour
 {
-    private LineRenderer lr;
-    private float length;
+    private SpriteRenderer sr;
     private Coroutine beamRoutine;
 
     private void Awake()
     {
-        lr = GetComponent<LineRenderer>();
+        sr = GetComponent<SpriteRenderer>();
         gameObject.SetActive(false);
     }
+
     public void StartBeam(float beamLength, float duration)
     {
-        length = beamLength;
+        float spriteHeight = sr.sprite.bounds.size.y;
+        float scaleY = beamLength / spriteHeight;
+
+        transform.localScale = new Vector3(transform.localScale.x, scaleY, transform.localScale.z);
 
         if (beamRoutine != null) StopCoroutine(beamRoutine);
         gameObject.SetActive(true);
-        beamRoutine = StartCoroutine(BeamRoutine(duration));
+        beamRoutine = StartCoroutine(AutoStop(duration));
     }
 
-    private IEnumerator BeamRoutine(float duration)
+    private IEnumerator AutoStop(float duration)
     {
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            UpdateLinePosition();
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
+        yield return new WaitForSecondsRealtime(duration);
         gameObject.SetActive(false);
         beamRoutine = null;
-    }
-
-    private void UpdateLinePosition()
-    {
-        Vector3 start = transform.position;
-        Vector3 end = start + transform.up * length;
-        lr.SetPosition(0, start);
-        lr.SetPosition(1, end);
     }
 }
