@@ -1,0 +1,11 @@
+{
+  "dialogues": [
+    { "name": "Tataroth", "sprite": "tataroth", "text": "Inikah akhir dari diriku? Kau akan menyesali perbuatanmu manusia!" },
+    { "name": "Tataroth", "sprite": "tataroth", "text": "Aku hanya akan mengharapkan kau untuk bisa bertahan kedepan, itu pun jika bisa. HAHAHAHAHAHAHAHA." },
+    { "name": "Travis", "sprite": "travis", "text": "Kamu berhasil mengalahkan Tataroth! Kamu telah menyelamatkanku dari penjara space beings." },
+    { "name": "Travis", "sprite": "travis", "text": "Huhuhuhu, HAHAHAHAHA OH MANUSIA BODOHNYA KALIAN!" },
+    { "name": "Travis", "sprite": "travis", "text": "Kamu, aku sangat berterima kasih karena kamu telah bersedia untuk menjadi boneka pelepasan diriku." },
+    { "name": "Travis", "sprite": "travis", "text": "Dengan ini, AKU BISA SEKALI LAGI MENGUASAI ALAM SEMESTA!" },
+    { "name": "Travis", "sprite": "travis", "text": "Manusia, dengan ini peran kalian sudah selesai. Sekarang lenyaplah! HAHAHAHAHAHAHA." }
+  ]
+}

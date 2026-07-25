@@ -38,12 +38,14 @@ public class PlayerSkillController : MonoBehaviour
         Debug.Log($"{selectedSkill.skillName} dipakai. Sisa pemakaian: {usesLeft}");
     }
 
+    /// <summary>Panggil dari StageManager tiap kali stage baru mulai.</summary>
     public void ResetUsesForNewStage()
     {
         if (selectedSkill != null)
             usesLeft = selectedSkill.maxUsesPerStage;
     }
 
+    /// <summary>Panggil dari UI pemilihan skill (setelah stage 1 selesai).</summary>
     public void SetSkill(ActiveSkillSO skill)
     {
         selectedSkill = skill;
@@ -51,4 +53,11 @@ public class PlayerSkillController : MonoBehaviour
     }
 
     public int GetUsesLeft() => usesLeft;
+
+    /// <summary>Panggil ini pas mulai run baru - hapus skill yang kepilih sebelumnya.</summary>
+    public void ResetSkill()
+    {
+        selectedSkill = null;
+        usesLeft = 0;
+    }
 }

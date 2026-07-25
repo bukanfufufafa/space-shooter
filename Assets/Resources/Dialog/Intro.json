@@ -1,0 +1,19 @@
+{
+    "dialogues": [
+        {
+            "name": "???",
+            "sprite": "",
+            "text": "Kamu!!! Kamu belum boleh tumbang disaat dunia sedang membutuhkan potensimu!"
+        },
+        {
+            "name": "Travis",
+            "sprite": "travis",
+            "text": "Aku Travis akan membantumu untuk menyelamatkan dunia dari serangan space beings dengan memberi kamu kekuatan yang diperlukan."
+        },
+        {
+            "name": "Travis",
+            "sprite": "travis",
+            "text": "Bertarunglah! Sebagai satu-satunya orang yang memiliki potensi dan kemampuan spesial kamu pasti bisa mengalahkan Tataroth dan mengusir para space beings!"
+        }
+    ]
+}

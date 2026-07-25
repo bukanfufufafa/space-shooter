@@ -1,0 +1,8 @@
+{
+  "dialogues": [
+    { "name": "Tataroth", "sprite": "tataroth", "text": "Kau, manusia ingin melawanku, Tataroth sang pemakan galaksi!? Congkak sekali kau manusia." },
+    { "name": "Tataroth", "sprite": "tataroth", "text": "Atas kecongkakan dan ketidaktahuanmu, aku Tataroth akan melenyapkan kau sekarang!" },
+    { "name": "Travis", "sprite": "travis", "text": "Tataroth adalah lawan yang tangguh, kamu harus gunakan kekuatanmu sebaik mungkin dan hindari semua serangan Tataroth." },
+    { "name": "Travis", "sprite": "travis", "text": "Dengan kondisimu sekarang, kamu sangat bisa untuk mengalahkan Tataroth. Bertahanlah!" }
+  ]
+}
