@@ -15,7 +15,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Awake()
     {
-        baseFireRate = fireRate; // simpan fire rate asli, dipakai buat balikin dari Full Power
+        baseFireRate = fireRate;
     }
 
     private void Update()
@@ -52,8 +52,16 @@ public class PlayerShooting : MonoBehaviour
         FireSingleShot(Quaternion.Euler(0f, 0f, -spreadAngle));
     }
 
+
     public void SetFullPowerMode(bool active, float fireRateMultiplier)
     {
         fireRate = active ? baseFireRate * fireRateMultiplier : baseFireRate;
+    }
+
+
+    public void ResetPassives()
+    {
+        tripleShotEnabled = false;
+        fireRate = baseFireRate;
     }
 }

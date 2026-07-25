@@ -5,15 +5,11 @@ public enum GameStage { Stage1, Stage2, Stage3, Done }
 public class StageManager : MonoBehaviour
 {
     [Header("Panel UI (drag dari Hierarchy)")]
-    public GameObject activeSkillPanel;   // muncul setelah Stage 1 selesai
-    public GameObject passiveSkillPanel;  // muncul setelah Stage 2 selesai
+    public GameObject activeSkillPanel;  
+    public GameObject passiveSkillPanel;  
 
     public GameStage currentStage = GameStage.Stage1;
 
-    /// <summary>
-    /// Panggil method ini dari tempat kalian nentuin "stage selesai"
-    /// (misal: musuh terakhir mati, atau wave/timer stage habis).
-    /// </summary>
     public void OnStageCleared()
     {
         switch (currentStage)
@@ -36,11 +32,9 @@ public class StageManager : MonoBehaviour
 
     private void ShowPanel(GameObject panel)
     {
-        Time.timeScale = 0f; // pause game selagi player milih (opsional, boleh dihapus)
+        Time.timeScale = 0f;
         panel.SetActive(true);
     }
-
-    /// <summary>Dipanggil dari SkillSelectionUI setelah player selesai memilih.</summary>
     public void AdvanceToNextStage()
     {
         Time.timeScale = 1f;
@@ -52,7 +46,13 @@ public class StageManager : MonoBehaviour
         }
 
         Debug.Log($"Lanjut ke {currentStage}");
-        // load/mulai stage berikutnya sesuai sistem kalian di sini
-        // contoh: SceneManager.LoadScene(currentStage.ToString());
+    }
+    
+    public void ResetStage()
+    {
+        currentStage = GameStage.Stage1;
+        Time.timeScale = 1f;
+        activeSkillPanel.SetActive(false);
+        passiveSkillPanel.SetActive(false);
     }
 }

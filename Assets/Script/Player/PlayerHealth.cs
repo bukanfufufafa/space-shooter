@@ -10,7 +10,6 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log($"Nyawa nambah! Total sekarang: {lives}");
     }
 
-    /// <summary>Panggil ini dari mana pun player kena serangan musuh.</summary>
     public void TakeDamage(int amount)
     {
         lives -= amount;
@@ -23,7 +22,11 @@ public class PlayerHealth : MonoBehaviour
         if (lives <= 0)
         {
             Debug.Log("Player mati!");
-            // TODO: logic game over
         }
+    }
+
+    public void ResetHealth(int startingLives = 3)
+    {
+        lives = startingLives;
     }
 }

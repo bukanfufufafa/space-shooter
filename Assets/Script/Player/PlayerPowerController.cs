@@ -1,14 +1,8 @@
 using UnityEngine;
 
-/// <summary>
-/// Power bar naik dari total damage yang player kasih ke musuh,
-/// dan berkurang 1/3 tiap kali player kena damage.
-/// Full Power aktif SELAMA bar penuh - begitu bar turun (karena kena hit), otomatis mati.
-/// </summary>
+
 public class PlayerPowerController : MonoBehaviour
 {
-    // Singleton biar gampang diakses dari PlayerBullet & PlayerHealth
-    // yang notabene ada di GameObject beda
     public static PlayerPowerController Instance { get; private set; }
 
     [Header("Power Bar")]
@@ -16,7 +10,7 @@ public class PlayerPowerController : MonoBehaviour
     public float currentPower = 0f;
 
     [Header("Efek Full Power")]
-    [Range(0.1f, 1f)] public float fullPowerFireRateMultiplier = 0.5f; // makin kecil = makin cepat nembak
+    [Range(0.1f, 1f)] public float fullPowerFireRateMultiplier = 0.5f;
 
     [Header("Referensi")]
     public PlayerShooting playerShooting;
@@ -28,10 +22,9 @@ public class PlayerPowerController : MonoBehaviour
         Instance = this;
     }
 
-    /// <summary>Panggil ini tiap kali bullet player ngasih damage ke musuh.</summary>
     public void AddPowerFromDamage(float damageDealt)
     {
-        if (isFullPower) return; // udah penuh, gak nambah lagi sampai turun lagi
+        if (isFullPower) return;
 
         currentPower += damageDealt;
 
@@ -42,7 +35,7 @@ public class PlayerPowerController : MonoBehaviour
         }
     }
 
-    /// <summary>Panggil ini tiap kali player kena damage.</summary>
+
     public void LosePowerFromDamage()
     {
         currentPower -= maxPower / 3f;
@@ -69,4 +62,12 @@ public class PlayerPowerController : MonoBehaviour
     }
 
     public float GetPowerPercent() => currentPower / maxPower;
+
+    /// <summary>Panggil pas mulai run baru.</summary>
+    public void ResetPower()
+    {
+        currentPower = 0f;
+        isFullPower = false;
+        playerShooting.SetFullPowerMode(false, 1f);
+    }
 }

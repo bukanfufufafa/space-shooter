@@ -53,4 +53,11 @@ public class PlayerSkillController : MonoBehaviour
     }
 
     public int GetUsesLeft() => usesLeft;
+
+    /// <summary>Panggil ini pas mulai run baru - hapus skill yang kepilih sebelumnya.</summary>
+    public void ResetSkill()
+    {
+        selectedSkill = null;
+        usesLeft = 0;
+    }
 }

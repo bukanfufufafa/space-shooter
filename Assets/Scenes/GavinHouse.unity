@@ -122,6 +122,71 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &68387944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 68387947}
+  - component: {fileID: 68387946}
+  - component: {fileID: 68387945}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &68387945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68387944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59cb48ee5b9cefc4c80785f44d516b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeSkillPanel: {fileID: 0}
+  passiveSkillPanel: {fileID: 0}
+  currentStage: 0
+--- !u!114 &68387946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68387944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2480b01700e466749a3b29d1b0bb21df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSkillController: {fileID: 0}
+  playerShooting: {fileID: 0}
+  playerHealth: {fileID: 0}
+  playerPowerController: {fileID: 0}
+  stageManager: {fileID: 0}
+--- !u!4 &68387947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68387944}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4162998, y: 1.0601072, z: 0.061115995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &504180724
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +324,38 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1329757201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6112973529257748007, guid: 493acc427363dd042b5ad8f5a425f421, type: 3}
+  m_PrefabInstance: {fileID: 8560481277881626181}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1329757207 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7324716749605235212, guid: 493acc427363dd042b5ad8f5a425f421, type: 3}
+  m_PrefabInstance: {fileID: 8560481277881626181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329757201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae16bcc2d7b8d0f4ab9a4e23109a8c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1329757211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329757201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7fcacc59736b4a982e63c873012fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPower: 100
+  currentPower: 0
+  fullPowerFireRateMultiplier: 0.5
+  playerShooting: {fileID: 1329757207}
 --- !u!1001 &5240248731381003404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -375,7 +472,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6112973529257748007, guid: 493acc427363dd042b5ad8f5a425f421, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1329757211}
   m_SourcePrefab: {fileID: 100100000, guid: 493acc427363dd042b5ad8f5a425f421, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -384,3 +484,4 @@ SceneRoots:
   - {fileID: 504180727}
   - {fileID: 8560481277881626181}
   - {fileID: 5240248731381003404}
+  - {fileID: 68387947}
