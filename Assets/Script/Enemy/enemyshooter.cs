@@ -15,7 +15,7 @@ public class EnemyShooter : MonoBehaviour
     [SerializeField] private bool inCam = false;
     [SerializeField] private float leftOffSide;
     [SerializeField] private float rightOffSide;
-    [SerializeField] private Vector2 offside;
+    
     private void Update()
     {
         fireTimer += Time.deltaTime;

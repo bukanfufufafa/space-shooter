@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -10,8 +11,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int totalEnemy = 10;
     [SerializeField] private float spawnDelay = 1f;
 
-    private int currentSpawned = 0;
+    [SerializeField] private List<GameObject> enemyReference = new();
 
+    private int currentSpawned = 0;
+    public bool defeated = false;
     private void Start()
     {
         StartCoroutine(SpawnEnemy());
@@ -21,11 +24,13 @@ public class EnemySpawner : MonoBehaviour
     {
         while (currentSpawned < totalEnemy)
         {
-            Instantiate(
+            GameObject enemy = Instantiate(
                 enemyPrefab,
                 transform.position,
                 Quaternion.identity
             );
+
+            enemyReference.Add(enemy);
 
             currentSpawned++;
 
