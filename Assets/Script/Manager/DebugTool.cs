@@ -9,7 +9,7 @@ public class DebugTools : MonoBehaviour
     public PlayerPowerController playerPowerController;
     public GameObject player; // buat DebugListComponents()
 
-
+    /// <summary>Simulasi "stage selesai" tanpa perlu wave/musuh beneran.</summary>
     public void ForceStageClear()
     {
         stageManager.OnStageCleared();
@@ -39,15 +39,12 @@ public class DebugTools : MonoBehaviour
 
     private void Update()
     {
-        // Baris ini SEMENTARA doang, buat mastiin Update() beneran jalan.
-        // Kalau ini gak muncul di Console pas ditekan, berarti script-nya gak aktif.
-        if (Input.anyKeyDown) Debug.Log("[DEBUG TEST] Ada tombol ditekan, Update() jalan.");
-
         if (Input.GetKeyDown(KeyCode.Alpha1)) ForceStageClear();
         if (Input.GetKeyDown(KeyCode.Alpha2)) SimulateDamage();
         if (Input.GetKeyDown(KeyCode.Alpha3)) SimulateAddPower();
         if (Input.GetKeyDown(KeyCode.Alpha4)) ForceNewRun();
         if (Input.GetKeyDown(KeyCode.Alpha5)) DebugListComponents();
+        if (Input.GetKeyDown(KeyCode.Alpha6)) playerPowerController.ForceFullPower();
     }
 
     /// <summary>Cetak semua GameObject + komponen di dalam Player ke Console,
