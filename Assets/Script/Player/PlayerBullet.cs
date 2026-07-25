@@ -27,10 +27,14 @@ public class PlayerBullet : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            // TODO: pas script Enemy udah ada, panggil enemyHealth.TakeDamage(damage) di sini juga
-
             if (PlayerPowerController.Instance != null)
                 PlayerPowerController.Instance.AddPowerFromDamage(damage);
+
+            if (other.TryGetComponent<enemystat>(out enemystat enemy))
+            {
+                enemy.health -= damage;
+                // atau enemy.TakeDamage(damage);
+            }
 
             Destroy(gameObject);
         }
