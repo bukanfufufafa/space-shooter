@@ -1,20 +1,27 @@
+using System.Collections;
 using UnityEngine;
- 
+
 public class PlayerBullet : MonoBehaviour
 {
     public float speed = 12f;
     public float lifeTime = 3f;
- 
+
     private void Start()
     {
-        Destroy(gameObject, lifeTime);
+        StartCoroutine(DestroyAfterLifetime());
     }
- 
+
+    private IEnumerator DestroyAfterLifetime()
+    {
+        yield return new WaitForSecondsRealtime(lifeTime);
+        Destroy(gameObject);
+    }
+
     private void Update()
     {
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
+        transform.Translate(Vector2.up * speed * Time.unscaledDeltaTime);
     }
- 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
@@ -23,4 +30,3 @@ public class PlayerBullet : MonoBehaviour
         }
     }
 }
- 
