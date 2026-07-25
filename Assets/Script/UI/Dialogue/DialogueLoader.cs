@@ -2,35 +2,16 @@ using UnityEngine;
 
 public class DialogueLoader : MonoBehaviour
 {
-    [SerializeField] private string fileName = "Dialog/intro";
-
-    private DialogueList dialogueList;
-
-    private void Start()
+    public DialogueList Muat(string namaFile)
     {
-        LoadDialogue();
-    }
-
-    private void LoadDialogue()
-    {
-        // Membaca file dari Resources
-        TextAsset json = Resources.Load<TextAsset>(fileName);
+        TextAsset json = Resources.Load<TextAsset>(namaFile);
 
         if (json == null)
         {
-            Debug.LogError("File JSON tidak ditemukan!");
-            return;
+            Debug.LogError($"File JSON '{namaFile}' tidak ditemukan di folder Resources!");
+            return null;
         }
 
-        // Mengubah JSON menjadi object C#
-        dialogueList = JsonUtility.FromJson<DialogueList>(json.text);
-
-        Debug.Log("Jumlah Dialog : " + dialogueList.dialogues.Length);
-
-        // Menampilkan isi dialog ke Console
-        foreach (Dialogue dialogue in dialogueList.dialogues)
-        {
-            Debug.Log(dialogue.name + " : " + dialogue.text);
-        }
+        return JsonUtility.FromJson<DialogueList>(json.text);
     }
 }

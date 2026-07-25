@@ -5,6 +5,9 @@ public class PauseManager : MonoBehaviour
     // Referensi ke tulisan PAUSED
     [SerializeField] private GameObject pauseText;
 
+    // Referensi ke panel setting, buat cek biar gak tabrakan input Escape
+    [SerializeField] private GameObject panelSetting;
+
     // Menyimpan apakah game sedang pause
     private bool isPaused = false;
 
@@ -19,6 +22,11 @@ public class PauseManager : MonoBehaviour
         // Jika tombol ESC ditekan
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            // Kalau panel setting lagi kebuka, biarkan SettingUI yang handle Escape ini
+            // (cukup nutup panel setting, jangan ikut toggle pause)
+            if (panelSetting != null && panelSetting.activeSelf)
+                return;
+
             TogglePause();
         }
     }

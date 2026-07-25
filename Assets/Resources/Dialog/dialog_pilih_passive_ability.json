@@ -1,0 +1,8 @@
+{
+  "dialogues": [
+    { "name": "Travis", "sprite": "travis", "text": "Karena serangan para space beings semakin kuat, aku akan membantumu dengan memberikan kekuatan baru." },
+    { "name": "Travis", "sprite": "travis", "text": "Berbeda dengan kekuatan sebelumnya, kekuatan ini memiliki efek permanen terhadap kekuatanmu sehingga kamu bisa memiliki peluang menang lebih tinggi kedepannya." },
+    { "name": "Travis", "sprite": "travis", "text": "Hanya saja, kekuatan ini memiliki sedikit timbal balik dikarenakan kekuatanku sendiri yang dikunci oleh para space beings." },
+    { "name": "Travis", "sprite": "travis", "text": "Tetapi dengan kemampuanmu sekarang, kekuatan ini lebih dari cukup untuk mengalahkan para space beings termasuk Tataroth." }
+  ]
+}

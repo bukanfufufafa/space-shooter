@@ -1,20 +1,19 @@
 {
-    "dialogues":
-    [
+    "dialogues": [
         {
-            "name":"Ash",
-            "sprite":"ash",
-            "text":"Yeah? Why not? Did you see the view outside? It doesn't look haunted to me at all."
+            "name": "???",
+            "sprite": "",
+            "text": "Kamu!!! Kamu belum boleh tumbang disaat dunia sedang membutuhkan potensimu!"
         },
         {
-            "name":"Ash",
-            "sprite":"ash",
-            "text":"Let's go inside."
+            "name": "Travis",
+            "sprite": "travis",
+            "text": "Aku Travis akan membantumu untuk menyelamatkan dunia dari serangan space beings dengan memberi kamu kekuatan yang diperlukan."
         },
         {
-            "name":"Narrator",
-            "sprite":"",
-            "text":"The adventure begins..."
+            "name": "Travis",
+            "sprite": "travis",
+            "text": "Bertarunglah! Sebagai satu-satunya orang yang memiliki potensi dan kemampuan spesial kamu pasti bisa mengalahkan Tataroth dan mengusir para space beings!"
         }
     ]
 }

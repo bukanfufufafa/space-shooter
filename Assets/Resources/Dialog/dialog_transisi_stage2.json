@@ -1,0 +1,7 @@
+{
+  "dialogues": [
+    { "name": "Tataroth", "sprite": "tataroth", "text": "Manusia, menyerah dan lenyaplah! Keberadaan kalian hanya akan membawa malapetaka terhadap alam semesta." },
+    { "name": "Tataroth", "sprite": "tataroth", "text": "Kalian tidak tahu apa konsekuensi dari perbuatan kedepan, oleh karena itu kami akan mencegah malapetaka terlebih dahulu dengan melenyapkan kalian!" },
+    { "name": "Travis", "sprite": "travis", "text": "Sangat keji, padahal manusia merupakan mahkluk yang tidak memiliki kekuatan spesial apa-apa seperti para space beings, tetapi mereka ingin melenyapkan kalian. Ini merupakan perbuatan yang tidak adil!" }
+  ]
+}
