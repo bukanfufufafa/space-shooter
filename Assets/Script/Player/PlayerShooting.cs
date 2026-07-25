@@ -7,10 +7,16 @@ public class PlayerShooting : MonoBehaviour
     public float bulletSpeed = 12f;
     public float fireRate = 0.25f;
     private float fireCooldown;
+    private float baseFireRate;
 
     [Header("Passive: Tri Shot")]
     public bool tripleShotEnabled = false;
-    public float spreadAngle = 15f;     
+    public float spreadAngle = 15f;
+
+    private void Awake()
+    {
+        baseFireRate = fireRate; // simpan fire rate asli, dipakai buat balikin dari Full Power
+    }
 
     private void Update()
     {
@@ -41,8 +47,13 @@ public class PlayerShooting : MonoBehaviour
 
     private void FireTripleShot()
     {
-        FireSingleShot(Quaternion.identity);                           // lurus tengah
-        FireSingleShot(Quaternion.Euler(0f, 0f, spreadAngle));          // miring kiri
-        FireSingleShot(Quaternion.Euler(0f, 0f, -spreadAngle));         // miring kanan
+        FireSingleShot(Quaternion.identity);
+        FireSingleShot(Quaternion.Euler(0f, 0f, spreadAngle));
+        FireSingleShot(Quaternion.Euler(0f, 0f, -spreadAngle));
+    }
+
+    public void SetFullPowerMode(bool active, float fireRateMultiplier)
+    {
+        fireRate = active ? baseFireRate * fireRateMultiplier : baseFireRate;
     }
 }

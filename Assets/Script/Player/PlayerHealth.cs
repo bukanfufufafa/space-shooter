@@ -1,9 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// Stub minimal. Kalau kalian sudah punya script HP player sendiri,
-/// tinggal tambahin method AddExtraLives() di sana dan hapus file ini.
-/// </summary>
 public class PlayerHealth : MonoBehaviour
 {
     public int lives = 3;
@@ -12,5 +8,22 @@ public class PlayerHealth : MonoBehaviour
     {
         lives += amount;
         Debug.Log($"Nyawa nambah! Total sekarang: {lives}");
+    }
+
+    /// <summary>Panggil ini dari mana pun player kena serangan musuh.</summary>
+    public void TakeDamage(int amount)
+    {
+        lives -= amount;
+
+        if (PlayerPowerController.Instance != null)
+            PlayerPowerController.Instance.LosePowerFromDamage();
+
+        Debug.Log($"Player kena damage! Sisa nyawa: {lives}");
+
+        if (lives <= 0)
+        {
+            Debug.Log("Player mati!");
+            // TODO: logic game over
+        }
     }
 }
