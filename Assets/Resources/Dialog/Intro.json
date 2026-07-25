@@ -1,0 +1,20 @@
+{
+    "dialogues":
+    [
+        {
+            "name":"Ash",
+            "sprite":"ash",
+            "text":"Yeah? Why not? Did you see the view outside? It doesn't look haunted to me at all."
+        },
+        {
+            "name":"Ash",
+            "sprite":"ash",
+            "text":"Let's go inside."
+        },
+        {
+            "name":"Narrator",
+            "sprite":"",
+            "text":"The adventure begins..."
+        }
+    ]
+}
