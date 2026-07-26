@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -79,5 +80,21 @@ public class PlayerHealth : MonoBehaviour
         isInvincible = false;
         StopAllCoroutines();
         if (spriteRenderer != null) spriteRenderer.color = normalColor;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("bullet"))
+        {
+            lives--;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("bullet"))
+        {
+            lives--;
+        }
     }
 }
