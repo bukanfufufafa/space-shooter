@@ -10,8 +10,9 @@ public class HUDTester : MonoBehaviour
     {
         HUDManager.Instance.setScore(score);
         HUDManager.Instance.setHighScore(5000);
-        HUDManager.Instance.setLife(3, 5);
+        HUDManager.Instance.setLife(3, 3);
         HUDManager.Instance.setPower(power);
+        DialogueManager.Instance.Mainkan("Dialog/narasi_travis_bebas",onSelesai: null);
     }
 
     void Update()
