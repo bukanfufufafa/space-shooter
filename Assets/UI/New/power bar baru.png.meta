@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b409d25e29b47a84797e4c4ae87fb932
+guid: 7accbfdaa1b1b764f82dfd03552e2bc3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8192
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Retry_settings_mainmenu button_0
+      name: power bar baru_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 431
-        width: 350
-        height: 379
+        x: 25
+        y: 141
+        width: 741
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06c72e175e5084f4d906d12690c27a38
-      internalID: 1514609317
+      spriteID: 897edb6671fedb642bfdf77e8411edd2
+      internalID: -908119467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Retry_settings_mainmenu button_1
+      name: power bar baru_1
       rect:
         serializedVersion: 2
-        x: 418
-        y: 438
-        width: 329
-        height: 359
+        x: 32
+        y: 30
+        width: 729
+        height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,92 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e88c1868a4cde9041b00d42d89009f48
-      internalID: 1168367809
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Retry_settings_mainmenu button_2
-      rect:
-        serializedVersion: 2
-        x: 797
-        y: 439
-        width: 355
-        height: 360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9e8e5605cb20ff4a9fa2e7296d7986b
-      internalID: -2115271126
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Retry_settings_mainmenu button_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 350
-        height: 379
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0bb4f7b7ff5ca6c44b0dcd84099adbe4
-      internalID: 329272731
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Retry_settings_mainmenu button_4
-      rect:
-        serializedVersion: 2
-        x: 418
-        y: 7
-        width: 329
-        height: 359
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9302158d81f601438da07a982128615
-      internalID: 1031036478
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Retry_settings_mainmenu button_5
-      rect:
-        serializedVersion: 2
-        x: 797
-        y: 8
-        width: 355
-        height: 360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bce8dd73d92216d43860f54a467fd7a4
-      internalID: 1394384497
+      spriteID: a7462ea56f884504890459bdbbf6da15
+      internalID: -231676729
       vertices: []
       indices: 
       edges: []
@@ -259,12 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Retry_settings_mainmenu button_0: 1514609317
-      Retry_settings_mainmenu button_1: 1168367809
-      Retry_settings_mainmenu button_2: -2115271126
-      Retry_settings_mainmenu button_3: 329272731
-      Retry_settings_mainmenu button_4: 1031036478
-      Retry_settings_mainmenu button_5: 1394384497
+      power bar baru_0: -908119467
+      power bar baru_1: -231676729
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

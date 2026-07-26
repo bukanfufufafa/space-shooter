@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneStarter : MonoBehaviour
-{
+{   
+    public string namaDialog;
     void Start()
     {
-        DialogueManager.Instance.Mainkan("Dialog/dialog_prolog", "_UITest");
+        DialogueManager.Instance.Mainkan(namaDialog, "_UITest");
     }
 }

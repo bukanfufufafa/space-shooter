@@ -12,6 +12,7 @@ public class HUDTester : MonoBehaviour
         HUDManager.Instance.setHighScore(5000);
         HUDManager.Instance.setLife(3, 3);
         HUDManager.Instance.setPower(power);
+        HUDManager.Instance.setSkill(3,3);
         DialogueManager.Instance.Mainkan("Dialog/narasi_travis_bebas",onSelesai: null);
     }
 
@@ -31,7 +32,7 @@ public class HUDTester : MonoBehaviour
             if (life < 0)
                 life = 0;
 
-            HUDManager.Instance.setLife(life, 5);
+            HUDManager.Instance.setLife(life, 3);
         }
 
         // Tambah Power
@@ -46,7 +47,7 @@ public class HUDTester : MonoBehaviour
         }// Kurangi Power
         if (Input.GetKeyDown(KeyCode.R))
         {
-            power -= 0.2f;
+            power -= 1f;
 
             if (power < 0)
                 power = 0;
