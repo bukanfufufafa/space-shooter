@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerPowerController : MonoBehaviour
 {
+
     public static PlayerPowerController Instance { get; private set; }
 
     [Header("Power Bar")]
@@ -15,6 +16,11 @@ public class PlayerPowerController : MonoBehaviour
     [Header("Referensi")]
     public PlayerShooting playerShooting;
 
+    [Header("Full Power Sprite")]
+    public SpriteRenderer playerSpriteRenderer;
+    public Sprite normalSprite;
+    public Sprite fullPowerSprite;
+
     private bool isFullPower = false;
 
     private void Awake()
@@ -22,9 +28,10 @@ public class PlayerPowerController : MonoBehaviour
         Instance = this;
     }
 
+    /// <summary>Panggil ini tiap kali bullet player ngasih damage ke musuh.</summary>
     public void AddPowerFromDamage(float damageDealt)
     {
-        if (isFullPower) return;
+        if (isFullPower) return; // udah penuh, gak nambah lagi sampai turun lagi
 
         currentPower += damageDealt;
 
@@ -35,7 +42,7 @@ public class PlayerPowerController : MonoBehaviour
         }
     }
 
-
+    /// <summary>Panggil ini tiap kali player kena damage.</summary>
     public void LosePowerFromDamage()
     {
         currentPower -= maxPower / 3f;
@@ -51,6 +58,10 @@ public class PlayerPowerController : MonoBehaviour
     {
         isFullPower = true;
         playerShooting.SetFullPowerMode(true, fullPowerFireRateMultiplier);
+
+        if (playerSpriteRenderer != null && fullPowerSprite != null)
+            playerSpriteRenderer.sprite = fullPowerSprite;
+
         Debug.Log("Full Power Mode AKTIF! Fire rate meningkat.");
     }
 
@@ -58,16 +69,28 @@ public class PlayerPowerController : MonoBehaviour
     {
         isFullPower = false;
         playerShooting.SetFullPowerMode(false, 1f);
+
+        if (playerSpriteRenderer != null && normalSprite != null)
+            playerSpriteRenderer.sprite = normalSprite;
+
         Debug.Log("Full Power Mode berakhir.");
     }
 
     public float GetPowerPercent() => currentPower / maxPower;
 
-    /// <summary>Panggil pas mulai run baru.</summary>
+    public void ForceFullPower()
+    {
+        currentPower = maxPower;
+        EnterFullPowerMode();
+    }
+
     public void ResetPower()
     {
         currentPower = 0f;
         isFullPower = false;
         playerShooting.SetFullPowerMode(false, 1f);
+
+        if (playerSpriteRenderer != null && normalSprite != null)
+            playerSpriteRenderer.sprite = normalSprite;
     }
 }

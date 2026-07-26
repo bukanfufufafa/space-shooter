@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 7076500689302912806}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,8 +262,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 8af25a3e3aa09024b993f34f6637969d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -336,6 +336,9 @@ MonoBehaviour:
   currentPower: 0
   fullPowerFireRateMultiplier: 0.5
   playerShooting: {fileID: 7324716749605235212}
+  playerSpriteRenderer: {fileID: 6278166566191396071}
+  normalSprite: {fileID: 21300000, guid: 8af25a3e3aa09024b993f34f6637969d, type: 3}
+  fullPowerSprite: {fileID: 21300000, guid: 35a6647f48958574084c24f7560c22fa, type: 3}
 --- !u!50 &3698538589120719101
 Rigidbody2D:
   serializedVersion: 4
