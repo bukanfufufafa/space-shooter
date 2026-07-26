@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2962757163220539241}
   - component: {fileID: 6494339498999839360}
   m_Layer: 5
-  m_Name: TIME STOP
+  m_Name: Passive 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,11 +123,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SkillSelectionUI, Assembly-CSharp
-        m_MethodName: ChooseActiveSkill
+        m_MethodName: ChoosePassiveSkill
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2b5658d2e83a00e47bb89d261e2947cf, type: 2}
-          m_ObjectArgumentAssemblyTypeName: ActiveSkillSO, Assembly-CSharp
+          m_ObjectArgument: {fileID: 11400000, guid: 3592adb8b1c551c479b5cd3dc516d189, type: 2}
+          m_ObjectArgumentAssemblyTypeName: PassiveSkillSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 4316919387537396549}
   - component: {fileID: 6732901695922164577}
   m_Layer: 5
-  m_Name: LASER
+  m_Name: Passive 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -603,11 +603,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SkillSelectionUI, Assembly-CSharp
-        m_MethodName: ChooseActiveSkill
+        m_MethodName: ChoosePassiveSkill
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 0dbb0cb4c943d4049a27f0ded53006a1, type: 2}
-          m_ObjectArgumentAssemblyTypeName: ActiveSkillSO, Assembly-CSharp
+          m_ObjectArgument: {fileID: 11400000, guid: 9733129b0fbb7bc4c923161d49298d62, type: 2}
+          m_ObjectArgumentAssemblyTypeName: PassiveSkillSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -991,7 +991,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'TIME STOP
+  m_text: 'TRI SHOT
 
 '
   m_isRightToLeft: 0
@@ -1127,7 +1127,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LASER
+  m_text: 'EXTRA LIFE
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
