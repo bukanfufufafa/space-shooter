@@ -1,40 +1,51 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [Header("Enemy")]
-    [SerializeField] private GameObject enemyPrefab;
-
-    [Header("Spawn Setting")]
-    [SerializeField] private int totalEnemy = 10;
-    [SerializeField] private float spawnDelay = 1f;
-
+    [Header("Enemy Reference")]
     [SerializeField] private List<GameObject> enemyReference = new();
 
-    private int currentSpawned = 0;
-    public bool defeated = false;
-    private void Start()
+    public bool Defeated { get; private set; }
+
+    private void Awake()
     {
-        StartCoroutine(SpawnEnemy());
+        // Jika list kosong, otomatis ambil semua child
+        if (enemyReference.Count == 0)
+        {
+            foreach (Transform child in transform)
+            {
+                enemyReference.Add(child.gameObject);
+            }
+        }
+
+        Defeated = false;
     }
 
-    IEnumerator SpawnEnemy()
+    private void Update()
     {
-        while (currentSpawned < totalEnemy)
+        if (Defeated)
+            return;
+
+        enemyReference.RemoveAll(enemy =>
+            enemy == null || !enemy.activeInHierarchy);
+
+        if (enemyReference.Count == 0)
         {
-            GameObject enemy = Instantiate(
-                enemyPrefab,
-                transform.position,
-                Quaternion.identity
-            );
+            Defeated = true;
+            Debug.Log($"{gameObject.name} selesai.");
+        }
+    }
 
-            enemyReference.Add(enemy);
+    public void ResetGroup()
+    {
+        Defeated = false;
 
-            currentSpawned++;
+        enemyReference.Clear();
 
-            yield return new WaitForSeconds(spawnDelay);
+        foreach (Transform child in transform)
+        {
+            enemyReference.Add(child.gameObject);
         }
     }
 }

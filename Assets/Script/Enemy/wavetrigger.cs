@@ -29,7 +29,7 @@ public class wavetrigger : MonoBehaviour
         if (!wave2Started)
         {
             // Cek pakai == (perbandingan), bukan = (assignment)
-            bool wave1Done = spawnerWave1.All(s => s.defeated == true);
+            bool wave1Done = spawnerWave1.All(s => s.Defeated == true);
 
             if (wave1Done)
             {
@@ -38,7 +38,7 @@ public class wavetrigger : MonoBehaviour
         }
         else
         {
-            bool wave2Done = spawnerWave2.All(s => s.defeated == true);
+            bool wave2Done = spawnerWave2.All(s => s.Defeated == true);
 
             if (wave2Done)
             {
