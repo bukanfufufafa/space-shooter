@@ -7,6 +7,6 @@ public class SceneStarter : MonoBehaviour
     public string namaDialog;
     void Start()
     {
-        DialogueManager.Instance.Mainkan(namaDialog, "_UITest");
+        DialogueManager.Instance.Mainkan(namaDialog, "stage1");
     }
 }

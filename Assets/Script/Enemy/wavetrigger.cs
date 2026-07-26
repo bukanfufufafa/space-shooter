@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class wavetrigger : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class wavetrigger : MonoBehaviour
                     stageManager.OnStageCleared();
 
                 Debug.Log("Semua wave di stage ini selesai!");
+                SceneManager.LoadScene("boss");
             }
         }
     }

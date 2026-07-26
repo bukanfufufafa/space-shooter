@@ -15,6 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/_VNTEST.unity
     guid: fbed339e3ff08cd489ecc053b414c8a4
   - enabled: 1
-    path: Assets/Scenes/_UITest.unity
-    guid: 44866ab1ac442e947a8498ea2fca16ad
+    path: Assets/Scenes/stage1.unity
+    guid: 079b372808169074dbb27541071a6748
+  - enabled: 1
+    path: Assets/Scenes/stage2.unity
+    guid: 53f939c1a7288be4c92fce7a48309431
+  - enabled: 1
+    path: Assets/Scenes/boss.unity
+    guid: 4aa91972783049347a9c6a26217e2e36
+  - enabled: 1
+    path: Assets/Scenes/Epilog.unity
+    guid: 189eb069b0d316347b524e85a9d43132
   m_configObjects: {}

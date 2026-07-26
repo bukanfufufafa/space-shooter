@@ -7,6 +7,7 @@ public class PauseManager : MonoBehaviour
 
     // Referensi ke panel setting, buat cek biar gak tabrakan input Escape
     [SerializeField] private GameObject panelSetting;
+    public GameObject pauseExtraUI; 
 
     // Menyimpan apakah game sedang pause
     private bool isPaused = false;
@@ -37,6 +38,7 @@ public class PauseManager : MonoBehaviour
 
         // Menampilkan atau menyembunyikan tulisan
         pauseText.SetActive(isPaused);
+        pauseExtraUI.SetActive(isPaused);
 
         // Menghentikan atau menjalankan game
         Time.timeScale = isPaused ? 0f : 1f;

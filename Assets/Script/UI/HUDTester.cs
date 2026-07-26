@@ -13,7 +13,7 @@ public class HUDTester : MonoBehaviour
         HUDManager.Instance.setLife(3, 3);
         HUDManager.Instance.setPower(power);
         HUDManager.Instance.setSkill(3,3);
-        DialogueManager.Instance.Mainkan("Dialog/narasi_travis_bebas",onSelesai: null);
+        // DialogueManager.Instance.Mainkan("Dialog/narasi_travis_bebas",onSelesai: null);
     }
 
     void Update()

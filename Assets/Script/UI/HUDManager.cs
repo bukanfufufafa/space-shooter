@@ -46,7 +46,7 @@ public class HUDManager : MonoBehaviour
 
     void Start()
     {
-        // Set label statis sekali di awal
+        // Set label statis sekali di awal (aman walau belum di-assign)
         if (lifeLabelText != null) lifeLabelText.text = "Life :";
         if (skillLabelText != null) skillLabelText.text = "Skill :";
         if (powerLabelText != null) powerLabelText.text = "Power";
@@ -54,25 +54,34 @@ public class HUDManager : MonoBehaviour
 
     private void Update()
     {
-        powerBar.fillAmount = Mathf.Lerp(
-            powerBar.fillAmount,
-            targetPower,
-            powerLerpSpeed * Time.deltaTime
-        );
+        // Power bar cuma di-lerp kalau memang di-assign
+        if (powerBar != null)
+        {
+            powerBar.fillAmount = Mathf.Lerp(
+                powerBar.fillAmount,
+                targetPower,
+                powerLerpSpeed * Time.deltaTime
+            );
+        }
     }
 
     public void setScore(int score)
     {
+        if (scoreText == null) return;
         scoreText.text = "Score : " + score.ToString();
     }
 
     public void setHighScore(int highScore)
     {
+        if (hi_scoreText == null) return;
         hi_scoreText.text = "High Score : " + highScore.ToString();
     }
 
     public void setLife(int currentHP, int maxHP)
     {
+        // Butuh holder DAN prefab, kalau salah satu kosong skip aja
+        if (lifeHolder == null || heartPrefab == null) return;
+
         foreach (Transform child in lifeHolder)
         {
             Destroy(child.gameObject);
@@ -83,6 +92,8 @@ public class HUDManager : MonoBehaviour
         {
             GameObject obj = Instantiate(heartPrefab, lifeHolder);
             Image img = obj.GetComponent<Image>();
+            if (img == null) continue; // jaga-jaga kalau prefab gak punya Image
+
             hearts.Add(img);
             img.color = i < currentHP ? Color.white : Color.gray;
         }
@@ -90,6 +101,8 @@ public class HUDManager : MonoBehaviour
 
     public void setSkill(int currentSkill, int maxSkill)
     {
+        if (skillHolder == null || starPrefab == null) return;
+
         foreach (Transform child in skillHolder)
         {
             Destroy(child.gameObject);
@@ -100,6 +113,8 @@ public class HUDManager : MonoBehaviour
         {
             GameObject obj = Instantiate(starPrefab, skillHolder);
             Image img = obj.GetComponent<Image>();
+            if (img == null) continue;
+
             stars.Add(img);
             img.color = i < currentSkill ? Color.white : Color.gray;
         }
@@ -108,15 +123,30 @@ public class HUDManager : MonoBehaviour
     public void setPower(float value)
     {
         targetPower = Mathf.Clamp01(value);
+        // powerBar null-nya udah di-handle di Update()
     }
 
     public void showPause(bool value)
     {
+        if (pausePanel == null) return;
         pausePanel.SetActive(value);
     }
 
     public void showSetting(bool value)
     {
+        if (settingPanel == null) return;
         settingPanel.SetActive(value);
+    }
+
+    public void setActiveAbility(Sprite icon, string desc)
+    {
+        if (activeIcon != null) activeIcon.sprite = icon;
+        if (deskActive != null) deskActive.text = desc;
+    }
+
+    public void setPassiveAbility(Sprite icon, string desc)
+    {
+        if (passiveIcon != null) passiveIcon.sprite = icon;
+        if (deskPassive != null) deskPassive.text = desc;
     }
 }

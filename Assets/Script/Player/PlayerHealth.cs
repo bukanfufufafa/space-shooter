@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class PlayerHealth : MonoBehaviour
@@ -22,7 +23,13 @@ public class PlayerHealth : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         normalColor = spriteRenderer.color;
     }
-
+    void Update()
+    {
+        if(lives >= 0)
+        {
+            SceneManager.LoadScene("_MainMenuTest");
+        }
+    }
     public void AddExtraLives(int amount)
     {
         lives += amount;
