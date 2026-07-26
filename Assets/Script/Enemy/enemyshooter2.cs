@@ -6,15 +6,11 @@ public class EnemyShooter2 : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
 
-    [Header("Shoot Setting")]
+    [Header("Shoot")]
     [SerializeField] private float fireRate = 1f;
 
-    [Header("Triple Shot")]
-    [SerializeField] private float bulletSpacing = 0.5f;
-
-    [Header("Shoot Area")]
-    [SerializeField] private float leftOffSide;
-    [SerializeField] private float rightOffSide;
+    [Header("Spread")]
+    [SerializeField] private float spreadAngle = 25f;
 
     private float fireTimer;
 
@@ -31,18 +27,24 @@ public class EnemyShooter2 : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Shoot!");
+        ShootBullet(-spreadAngle);
+        ShootBullet(0);
+        ShootBullet(spreadAngle);
+    }
 
-        Instantiate(projectilePrefab,
-            firePoint.position + Vector3.left * bulletSpacing,
-            Quaternion.identity);
-
-        Instantiate(projectilePrefab,
+    private void ShootBullet(float angle)
+    {
+        GameObject bullet = Instantiate(
+            projectilePrefab,
             firePoint.position,
             Quaternion.identity);
 
-        Instantiate(projectilePrefab,
-            firePoint.position + Vector3.right * bulletSpacing,
-            Quaternion.identity);
+        Vector2 direction =
+            Quaternion.Euler(0, 0, angle) * Vector2.down;
+
+        if (bullet.TryGetComponent(out EnemyProjectile2 projectile))
+        {
+            projectile.SetDirection(direction);
+        }
     }
 }
