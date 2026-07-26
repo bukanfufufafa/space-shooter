@@ -2,83 +2,63 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class WaveTrigger : MonoBehaviour
+public class wavetrigger : MonoBehaviour
 {
-    [Header("Wave")]
-    [SerializeField] private List<EnemySpawner> spawnerWave1 = new();
-    [SerializeField] private List<EnemySpawner> spawnerWave2 = new();
+    [SerializeField] private List<EnemySpawner> spawnerWave1 = new List<EnemySpawner>();
+    [SerializeField] private List<EnemySpawner> spawnerWave2 = new List<EnemySpawner>();
 
-    //[SerializeField] private StageManager stageManager;
+    [Header("Referensi")]
+    [SerializeField] private StageManager stageManager;
 
-    private bool wave1Finished;
-    private bool wave2Finished;
+    private bool wave2Started = false;
+    private bool waveAllDone = false;
 
     private void Start()
     {
-        wave1Finished = false;
-        wave2Finished = false;
+        foreach (var item in spawnerWave2)
+            item.gameObject.SetActive(false);
 
-        // Wave 2 disembunyikan
-        foreach (EnemySpawner spawner in spawnerWave2)
-        {
-            spawner.gameObject.SetActive(false);
-        }
-
-        // Reset Wave 1
-        foreach (EnemySpawner spawner in spawnerWave1)
-        {
-            spawner.gameObject.SetActive(true);
-            spawner.ResetGroup();
-        }
+        foreach (var item in spawnerWave1)
+            item.gameObject.SetActive(true);
     }
 
     private void Update()
     {
-        // ======================
-        // Wave 1
-        // ======================
+        if (waveAllDone) return; // udah kelar semua, gak perlu ngecek lagi
 
-        if (!wave1Finished)
+        if (!wave2Started)
         {
-            if (spawnerWave1.All(x => x.Defeated))
+            // Cek pakai == (perbandingan), bukan = (assignment)
+            bool wave1Done = spawnerWave1.All(s => s.defeated == true);
+
+            if (wave1Done)
             {
-                wave1Finished = true;
-
-                Debug.Log("Wave 1 Selesai");
-
-                //stageManager.OnStageCleared();
-
-                foreach (EnemySpawner spawner in spawnerWave2)
-                {
-                    spawner.gameObject.SetActive(true);
-                    spawner.ResetGroup();
-                }
+                StartWave2();
             }
         }
-
-        // ======================
-        // Wave 2
-        // ======================
-
-        if (!wave2Finished)
+        else
         {
-            if (spawnerWave2.All(x => x.Defeated))
+            bool wave2Done = spawnerWave2.All(s => s.defeated == true);
+
+            if (wave2Done)
             {
-                wave2Finished = true;
+                waveAllDone = true;
 
-                Debug.Log("Wave 2 Selesai");
+                if (stageManager != null)
+                    stageManager.OnStageCleared();
 
-                //stageManager.OnStageCleared();
+                Debug.Log("Semua wave di stage ini selesai!");
             }
         }
     }
 
-    public void StartWave2()
+    private void StartWave2()
     {
-        foreach (EnemySpawner spawner in spawnerWave2)
-        {
-            spawner.gameObject.SetActive(true);
-            spawner.ResetGroup();
-        }
+        wave2Started = true;
+
+        foreach (var item in spawnerWave2)
+            item.gameObject.SetActive(true);
+
+        Debug.Log("Wave 1 selesai, Wave 2 dimulai!");
     }
 }
